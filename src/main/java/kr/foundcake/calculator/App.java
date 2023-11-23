@@ -87,6 +87,7 @@ public class App extends JFrame {
 					break;
 				case "+/-":
 					button.addActionListener((ActionEvent e) -> {
+						if(value.equals("0")) return;
 						value = fieldFormat.format(Double.parseDouble(value) * -1);
 						changeFiled();
 					});
@@ -96,6 +97,7 @@ public class App extends JFrame {
 					break;
 				case ".":
 					button.addActionListener((ActionEvent e) -> {
+						if(value.contains(".")) return;
 						value += ".";
 						changeFiled();
 					});
@@ -157,6 +159,7 @@ public class App extends JFrame {
 
 	private void calculate(String operator) {
 		double value = Double.parseDouble(this.value);
+		if(value == 0.0) return;
 		if(result != null) {
 			switch(this.operator) {
 				case "+":
